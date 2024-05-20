@@ -1,0 +1,21 @@
+{
+  "name": "l5_mission_1",
+  "version": "1.0.0",
+  "description": "mission_1_azure_custom_vision_car_recognition_app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sarah_c",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/cognitiveservices-customvision-prediction": "^5.1.2",
+    "@azure/ms-rest-js": "^2.7.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.9.7"
+  }
+}
