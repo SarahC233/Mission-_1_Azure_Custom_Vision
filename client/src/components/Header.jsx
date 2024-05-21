@@ -1,4 +1,3 @@
-// Header.jsx
 import React from "react";
 import styles from "./Header.module.css";
 import logoImage from "../images/turners_logo.png";

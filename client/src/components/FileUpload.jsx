@@ -58,25 +58,25 @@ const FileUpload = () => {
 
       <div className={styles.fileUploadArea}>
         <h2>Upload a Photo of Your Car here</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="file" onChange={handleFileChange} accept="image/*" />
+        <form onSubmit={handleSubmit}> {/*Form element with onSubmit event handler that calls the handleSubmit function when the form is submitted*/}
+          <input type="file" onChange={handleFileChange} accept="image/*" /> {/*Input element of type file that allows the user to select a file. Calls the handleFileChange function when the selected file changes*/}
           <button
             type="submit"
             disabled={loading}
             className={styles.uploadButton}
           >
-            {loading ? "Uploading..." : "Upload"}
+            {loading ? "Uploading..." : "Upload"} {/*Ternary operator that changes text of button based on the loading state. E.g., if loading is true the text is 'uploading'*/}
           </button>
         </form>
-        {result && (
+        {result && ( //Conditional rendering that displays the result of upload if it exists
           <div className={styles.resultDisplay}>
             <h3 className={styles.resultText}>Result:</h3>
             <p>Vehicle Type: {result.vehicleType}</p>
             <p>Confidence: {result.confidence}</p>
             <p>Premium Estimate: {result.premiumEstimate}</p>
-            {result.image && (
+            {result.image && ( //Conditional rendering that displays the image if it exists
               <img
-                src={result.image}
+                src={result.image} //src of image stored in result.image
                 alt="Result"
                 className={styles.resultImage}
               />

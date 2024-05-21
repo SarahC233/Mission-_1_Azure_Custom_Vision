@@ -9,7 +9,7 @@ const {
 } = require("@azure/cognitiveservices-customvision-prediction"); // Imports the PredictionAPIClient class from the Azure Custom Vision SDK (software development kit)
 const { ApiKeyCredentials } = require("@azure/ms-rest-js"); //imports the ApiKeyCredentials class from the Azure REST SDK
 const bodyParser = require("body-parser"); // Imports the body-parser library for parsing incoming HTTP request bodies
-const cors = require("cors");//Imports Cross-Origin Resource Sharing (CORS) middleware to enable CORs
+const cors = require("cors"); //Imports Cross-Origin Resource Sharing (CORS) middleware to enable CORs
 
 const app = express(); // Creates an Express application
 app.use(cors());
@@ -31,23 +31,26 @@ const predictor = new PredictionAPIClient(
   predictionEndpoint
 );
 
-app.post("/predict", upload.single("image"), async (req, res) => { //Sets up a POST route at the /predict endpoint that uses 
-  //the Multer middleware to accept a single file upload with the field name "image". 
+app.post("/predict", upload.single("image"), async (req, res) => {
+  //Sets up a POST route at the /predict endpoint that uses
+  //the Multer middleware to accept a single file upload with the field name "image".
   //The route is an asynchronous function that uses the Custom Vision SDK to classify the uploaded image,
-  //then sends response with the prediction results 
+  //then sends response with the prediction results
   console.log(req.file); //log the file received
   console.log(req.body);
 
   const imageFilePath = req.file.path;
   console.log(req.file);
 
-  try { //this block wraps code that might throw an exception, if that happens can be caught and handled in catch block
-    const results = await predictor.classifyImage( //Calling classifyImage method of predictor object (which is an instance of PredictionAPIClient from Azure Custom Prediction SDK).
-    //This method sends an image to the Custom Vision Service and receives a prediciton back
+  try {
+    //this block wraps code that might throw an exception, if that happens can be caught and handled in catch block
+    const results = await predictor.classifyImage(
+      //Calling classifyImage method of predictor object (which is an instance of PredictionAPIClient from Azure Custom Prediction SDK).
+      //This method sends an image to the Custom Vision Service and receives a prediciton back
       projectId,
-      publishIterationName, //Deets of the project and iteration to use 
+      publishIterationName, //Deets of the project and iteration to use
       fs.readFileSync(imageFilePath)
-    ); //Reads the image file from the file system synchronously (blocks execution of further code till file is read, 
+    ); //Reads the image file from the file system synchronously (blocks execution of further code till file is read,
     //resulting data sent as image to classify)
     fs.unlinkSync(imageFilePath); // Delete the file after use
 
@@ -60,7 +63,7 @@ app.post("/predict", upload.single("image"), async (req, res) => { //Sets up a P
 
     const highestPrediction = predictions.reduce((prev, current) => {
       return prev.probability > current.probability ? prev : current;
-    }, {}); //uses the reduce method to find the prediction with the highest probability. 
+    }, {}); //uses the reduce method to find the prediction with the highest probability.
     //Reduce method takes a callback function that compares the probabilities of two predictions (prev and current) and returns the one with the higher probability
 
     if (!highestPrediction.tagName) {
@@ -83,7 +86,8 @@ app.post("/predict", upload.single("image"), async (req, res) => { //Sets up a P
 
     res.status(200).send({ vehicleType, confidence, premiumEstimate }); //Executed when prediction is successful. Sends response with HTTP status code 200 (OK) and JSON
     //object containing the predicted vehicle type, confidence score, and premium estimate
-  } catch (error) { //this block will be executed if there's an error during prediction
+  } catch (error) {
+    //this block will be executed if there's an error during prediction
     console.error("Prediction Error:", error);
     res.status(500).send({ error: "Error predicting car type" });
   }

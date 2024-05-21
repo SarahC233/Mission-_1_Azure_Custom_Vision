@@ -1,4 +1,3 @@
-// Navbar.jsx
 import React from "react";
 import styles from "./Navbar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

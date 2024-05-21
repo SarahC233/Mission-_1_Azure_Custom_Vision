@@ -1,4 +1,3 @@
-
 import React from "react";
 import FileUpload from "./FileUpload";
 import styles from "./App.module.css";
