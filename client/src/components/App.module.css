@@ -1,0 +1,33 @@
+/* App.module.css */
+.app {
+  background-color: #f0f0f0; /* Change this to the exact shade of grey you want */
+  min-height: 100vh; /* Set the minimum height to 100% of the viewport height */
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh; /* Set the minimum height to 100% of the viewport height */
+}
+
+.content {
+  background-color: white;
+  width: 100%;
+  max-width: 1200px; /* Change this to the desired width of the white section */
+}
+
+.heroImageContainer {
+  height: 270px; /* Set this to the desired height of the hero image */
+  overflow: hidden;
+}
+
+.heroImage {
+  display: block;
+  width: 100%; /* Set the width to 100% */
+  height: auto; /* Set the height to auto to maintain the aspect ratio */
+  margin: 0 auto;
+}
+
+.fileUploadArea {
+  /* Add your styles for the file upload area here */
+}

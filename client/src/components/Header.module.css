@@ -1,0 +1,27 @@
+/* Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px; /* Set this to the desired height of the header */
+  padding: 0 60px; /* Add some padding to the left and right */
+  /* Add your other styles for the header here */
+}
+
+.logo {
+  /* Add your styles for the logo here */
+}
+
+.rightHeader {
+  display: flex;
+  gap: 20px;
+}
+
+.loginRegister,
+.phone,
+.findUs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: blue; /* Change this to the exact shade of blue you want */
+}
