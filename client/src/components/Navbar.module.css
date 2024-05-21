@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: blue; /* Change this to the exact shade of blue you want */
+  background-color: #005ce6;
   color: white;
   padding: 10px;
 }

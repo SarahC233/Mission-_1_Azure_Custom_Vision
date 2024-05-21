@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./FileUpload.module.css";
+import typesImage from "../images/types.jpg";
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null); //declares a state variable selectedFile and a function setSelectedFile to update the state
@@ -44,33 +45,45 @@ const FileUpload = () => {
   };
 
   return (
-    <div className={styles.fileUploadArea}>
-      <h2>Upload a Car Image</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} accept="image/*" />
-        <button
-          type="submit"
-          disabled={loading}
-          className={styles.uploadButton}
-        >
-          {loading ? "Uploading..." : "Upload"}
-        </button>
-      </form>
-      {result && (
-        <div className={styles.resultDisplay}>
-          <h3 className={styles.resultText}>Result:</h3>
-          <p>Vehicle Type: {result.vehicleType}</p>
-          <p>Confidence: {result.confidence}</p>
-          <p>Premium Estimate: {result.premiumEstimate}</p>
-          {result.image && (
-            <img
-              src={result.image}
-              alt="Result"
-              className={styles.resultImage}
-            />
-          )}
-        </div>
-      )}
+    <div>
+      <div className={styles.explanation}>
+        <h2>About the Insurance Estimate Tool</h2>
+        <p>
+          This tool lets you upload a picture of the car you want to insure and
+          receive an estimate of what the annual premium would be. Try it out
+          below!{" "}
+        </p>
+        <img src={typesImage} alt="Car Types" className={styles.explanation} />
+      </div>
+
+      <div className={styles.fileUploadArea}>
+        <h2>Upload a Photo of Your Car here</h2>
+        <form onSubmit={handleSubmit}>
+          <input type="file" onChange={handleFileChange} accept="image/*" />
+          <button
+            type="submit"
+            disabled={loading}
+            className={styles.uploadButton}
+          >
+            {loading ? "Uploading..." : "Upload"}
+          </button>
+        </form>
+        {result && (
+          <div className={styles.resultDisplay}>
+            <h3 className={styles.resultText}>Result:</h3>
+            <p>Vehicle Type: {result.vehicleType}</p>
+            <p>Confidence: {result.confidence}</p>
+            <p>Premium Estimate: {result.premiumEstimate}</p>
+            {result.image && (
+              <img
+                src={result.image}
+                alt="Result"
+                className={styles.resultImage}
+              />
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

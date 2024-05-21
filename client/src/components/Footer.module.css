@@ -1,0 +1,20 @@
+.footer {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 150px;
+}
+
+.column {
+  flex: 1;
+}
+
+.column h2 {
+  margin-bottom: 10px;
+}
+
+.column p {
+  margin-bottom: 5px;
+}

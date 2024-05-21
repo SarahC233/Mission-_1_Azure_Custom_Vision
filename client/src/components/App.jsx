@@ -1,10 +1,11 @@
-// App.jsx
+
 import React from "react";
 import FileUpload from "./FileUpload";
 import styles from "./App.module.css";
 import heroImage from "../images/turners_hero.png";
 import Header from "./Header";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           </div>
           <div className={styles.fileUploadArea}>
             <FileUpload />
+            <Footer />
           </div>
         </div>
       </div>
