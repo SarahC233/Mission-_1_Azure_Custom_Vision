@@ -31,6 +31,12 @@ const predictor = new PredictionAPIClient(
   predictionEndpoint
 );
 
+//Health check endpoint
+app.get("/health", (req, res) => {
+  res.send("Server is running");
+});
+
+//Prediction endpoint
 app.post("/predict", upload.single("image"), async (req, res) => {
   //Sets up a POST route at the /predict endpoint that uses
   //the Multer middleware to accept a single file upload with the field name "image".
