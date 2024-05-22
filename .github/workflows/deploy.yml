@@ -23,6 +23,9 @@ jobs:
         working-directory: ./backend
         run: npm install
 
+      - name: Verify backend directory contents (debug)
+        run: ls -R ./backend
+
       - name: Upload backend artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
@@ -39,7 +42,7 @@ jobs:
         with:
           name: backend-app
 
-      - name: List downloaded files (debug)
+      - name: Verify artifact contents (debug)
         run: ls -R
 
       - name: Login to Azure
@@ -51,6 +54,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'insurance-estimate'
-          package: ./backend
+          package: backend
+
 
 
