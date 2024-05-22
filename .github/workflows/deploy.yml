@@ -26,11 +26,16 @@ jobs:
       - name: Verify backend directory contents (debug)
         run: ls -R ./backend
 
+      - name: Zip backend directory
+        run: |
+          cd backend
+          zip -r ../backend.zip *
+
       - name: Upload backend artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: backend-app
-          path: ./backend
+          path: backend.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,7 +47,7 @@ jobs:
         with:
           name: backend-app
 
-      - name: Verify artifact contents (debug)
+      - name: List downloaded files (debug)
         run: ls -R
 
       - name: Login to Azure
@@ -54,7 +59,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'insurance-estimate'
-          package: backend
+          package: backend.zip
+
 
 
 
