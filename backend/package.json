@@ -4,7 +4,8 @@
   "description": "mission_1_azure_custom_vision_car_recognition_app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "sarah_c",
   "license": "ISC",
