@@ -20,14 +20,17 @@ jobs:
           node-version: "20.x"
 
       - name: Install backend dependencies
-        run: npm install
         working-directory: ./backend
+        run: npm install
 
       - name: Upload backend artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: backend-app
-          path: ./backend
+          path: |
+            ./backend/*
+            !./backend/node_modules/**/*
+            !./backend/**/*.log
 
   deploy:
     runs-on: ubuntu-latest
