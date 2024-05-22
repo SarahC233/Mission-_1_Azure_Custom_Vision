@@ -40,11 +40,14 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
           name: backend-artifact
-          path: backend.zip
+          path: .
 
       - name: Unzip backend artifact
         run: |
