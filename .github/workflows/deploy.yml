@@ -17,7 +17,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: "20.x"
+          node-version: '20.x'
 
       - name: Install backend dependencies
         working-directory: ./backend
@@ -27,10 +27,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: backend-app
-          path: |
-            ./backend/*
-            !./backend/node_modules/**/*
-            !./backend/**/*.log
+          path: ./backend
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,9 +44,9 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: "Deploy to Azure Web App"
+      - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "insurance-estimate"
-          package: ./backend
-#this is a trigger to re-run the workflow x2
+          app-name: 'insurance-estimate'
+          package: backend
+
