@@ -1,0 +1,23 @@
+.resultDisplay {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.resultTitle {
+  margin-bottom: 20px;
+  color: #444;
+  text-transform: uppercase;
+}
+
+.resultItem {
+  margin-bottom: 10px;
+}
+
+.resultValue {
+  font-weight: bold;
+}

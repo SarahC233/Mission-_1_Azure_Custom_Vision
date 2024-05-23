@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./FileUpload.module.css";
 import typesImage from "../images/types.jpg";
+import resultStyles from "./ResultDisplay.module.css";
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null); //declares a state variable selectedFile and a function setSelectedFile to update the state
@@ -58,22 +59,41 @@ const FileUpload = () => {
 
       <div className={styles.fileUploadArea}>
         <h2>Upload a Photo of Your Car here</h2>
-        <form onSubmit={handleSubmit}> {/*Form element with onSubmit event handler that calls the handleSubmit function when the form is submitted*/}
-          <input type="file" onChange={handleFileChange} accept="image/*" /> {/*Input element of type file that allows the user to select a file. Calls the handleFileChange function when the selected file changes*/}
+        <form onSubmit={handleSubmit}>
+          {" "}
+          {/*Form element with onSubmit event handler that calls the handleSubmit function when the form is submitted*/}
+          <input type="file" onChange={handleFileChange} accept="image/*" />{" "}
+          {/*Input element of type file that allows the user to select a file. Calls the handleFileChange function when the selected file changes*/}
           <button
             type="submit"
             disabled={loading}
             className={styles.uploadButton}
           >
-            {loading ? "Uploading..." : "Upload"} {/*Ternary operator that changes text of button based on the loading state. E.g., if loading is true the text is 'uploading'*/}
+            {loading ? "Uploading..." : "Upload"}{" "}
+            {/*Ternary operator that changes text of button based on the loading state. E.g., if loading is true the text is 'uploading'*/}
           </button>
         </form>
         {result && ( //Conditional rendering that displays the result of upload if it exists
           <div className={styles.resultDisplay}>
-            <h3 className={styles.resultText}>Result:</h3>
-            <p>Vehicle Type: {result.vehicleType}</p>
-            <p>Confidence: {result.confidence}</p>
-            <p>Premium Estimate: {result.premiumEstimate}</p>
+            <h3 className={styles.resultTitle}>Result:</h3>
+            <p className={resultStyles.resultItem}>
+              Vehicle Type:{" "}
+              <span className={resultStyles.resultValue}>
+                {result.vehicleType}
+              </span>
+            </p>
+            <p className={resultStyles.resultItem}>
+              Confidence:{" "}
+              <span className={resultStyles.resultValue}>
+                {result.confidence}
+              </span>
+            </p>
+            <p className={resultStyles.resultItem}>
+              Premium Estimate:{" "}
+              <span className={resultStyles.resultValue}>
+                {result.premiumEstimate}
+              </span>
+            </p>
             {result.image && ( //Conditional rendering that displays the image if it exists
               <img
                 src={result.image} //src of image stored in result.image
