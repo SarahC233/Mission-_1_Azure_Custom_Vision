@@ -32,10 +32,13 @@ const FileUpload = () => {
       setLoading(true); //sets loading state to true when request in progress
       //below sends a POST request to the server at the /predict endpoint with the selected file.
       //The await keyword is used to wait for the request to complete before moving on to the next line of code.
-      const response = await fetch("http://localhost:3000/predict", {
-        method: "POST",
-        body: formData,
-      });
+     const response = await fetch(
+       "https://insurance-estimate.azurewebsites.net/predict",
+       {
+         method: "POST",
+         body: formData,
+       }
+     );
       const data = await response.json(); //reads the response body as JSON, await waits for the operation to complete
       setResult(data); //updates the result state with the response data
     } catch (error) {
